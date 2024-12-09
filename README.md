@@ -1,7 +1,7 @@
 # My Portfolio Navigator
 Hello! This is my final project for UNC Charlotte's DSBA-5122 - Visual Analytics course!
 ## Streamlit Application Link
-[Link To Streamlit App](https://gopa-finalproject-app.streamlit.app/)
+[Link To Streamlit App](https://my-portfolio-navigator.streamlit.app/MyPortfolio)
 ## Introduction
 The stock market is a dynamic environment where wealth exchanges hands through trading of financial instruments. Predicting stock price movements has the potential to yield significant profits, making it a valuable pursuit for investors. As a stock investor, my approach revolves around leveraging data analysis, pattern recognition, and machine learning techniques to identify market trends and investment opportunities with greater precision.
 
