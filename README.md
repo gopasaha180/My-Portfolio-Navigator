@@ -15,5 +15,5 @@ While the current project offers a functional and interactive platform for portf
 **2.	Machine Learning Integration:** By integrating machine learning models, such as predictive algorithms (e.g., ARIMA, LSTM), the dashboard could forecast future stock prices or returns, providing insights for better strategic planning and investment choices.
 
 **3.	Multi-Asset Portfolio Management:** Expanding the platform to manage portfolios consisting of different asset types, such as bonds, commodities, and ETFs, would allow for more comprehensive portfolio optimization and analysis.
-   
-By continuing to build on the foundation established in this project, the dashboard can evolve into a comprehensive, AI-powered investment tool that supports both novice and experienced investors in optimizing their portfolios and achieving long-term financial success.
+
+By continuing to build on the foundation established in this project,  I would like to continue to evolve the dashboard into a comprehensive, AI-powered investment tool that supports both novice and experienced investors in optimizing their portfolios and achieving long-term financial success.
