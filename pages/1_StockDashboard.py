@@ -30,14 +30,12 @@ ticker = yf.Ticker(ticker_symbol)
 
 
 # Download data
-data = yf.download(ticker_symbol, start=start_date, end=end_date)
+data = yf.download(ticker_symbol, start=start_date, end=end_date, group_by='ticker_symbol')
 
-# Check if data is empty
 if data.empty:
-    st.warning("⚠️ No data found for this ticker and date range. Try a different combination.")
+    st.warning("⚠️ No data returned. Try changing the stock ticker or date range.")
 else:
-    data['Ticker'] = ticker_symbol  # manually add ticker
-    data.reset_index(inplace=True)  # move date to a column instead of index
+    data = data.stack(level=0).rename_axis(['Date', 'Ticker']).reset_index(level=1)
 
 
 
