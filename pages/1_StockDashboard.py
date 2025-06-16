@@ -21,23 +21,19 @@ tickers = ticker_data['Symbol'].unique()
 ticker_symbol = st.sidebar.selectbox('Pick your Stock Ticker',tickers)
 
 start_date = st.sidebar.date_input('Start Date', value=datetime.date(2020, 1, 1))
-end_date = st.sidebar.date_input('End Date', value=datetime.date.today())
+end_date = st.sidebar.date_input('End Date', value="today")
 
 st.subheader(f'{ticker_symbol} Stock Overview')
 historical_data, pricing_data, chart = st.tabs(["Historical Data", "Pricing Data", "Chart"])
 
 ticker = yf.Ticker(ticker_symbol)
-data = yf.download(ticker_symbol, start=start_date, end=end_date)
+
+
+
+
+# if start_date is not None and end_date is not None
+data = yf.download(ticker_symbol, start=start_date, end=end_date, group_by='ticker_symbol')
 data = data.stack(level=0).rename_axis(['Date', 'Ticker']).reset_index(level=1)
-
-# Reorder columns to match your display format
-columns_to_show = ['Date', 'Ticker', 'Open', 'High', 'Low', 'Close', 'Volume']
-data = data[columns_to_show]
-
-
-
-
-
 
 with historical_data:
     st.header('Historical Data')
@@ -77,4 +73,3 @@ with chart:
 
 st.write("**Notice** also that weekends are missing from the records.")
 st.write("**Disclaimer:** Stock prices are subject to change at any time and involve inherent risks. This information is for general knowledge and informational purposes only and does not constitute financial advice.")
-        
