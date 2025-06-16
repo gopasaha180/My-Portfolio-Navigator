@@ -28,18 +28,10 @@ historical_data, pricing_data, chart = st.tabs(["Historical Data", "Pricing Data
 
 ticker = yf.Ticker(ticker_symbol)
 data = yf.download(ticker_symbol, start=start_date, end=end_date)
-
-# Only proceed if data is valid
-if not data.empty:
-    data.reset_index(inplace=True)
-    data['Ticker'] = ticker_symbol
-
-# Add 'Adj Close' fallback if missing
-if 'Adj Close' not in data.columns:
-     data['Adj Close'] = data['Close']
+data = data.stack(level=0).rename_axis(['Date', 'Ticker']).reset_index(level=1)
 
 # Reorder columns to match your display format
-columns_to_show = ['Date', 'Ticker', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+columns_to_show = ['Date', 'Ticker', 'Open', 'High', 'Low', 'Close', 'Volume']
 data = data[columns_to_show]
 
 
