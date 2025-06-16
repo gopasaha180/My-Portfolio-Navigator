@@ -21,7 +21,7 @@ tickers = ticker_data['Symbol'].unique()
 ticker_symbol = st.sidebar.selectbox('Pick your Stock Ticker',tickers)
 
 start_date = st.sidebar.date_input('Start Date', value=datetime.date(2020, 1, 1))
-end_date = st.sidebar.date_input('End Date', value="today")
+end_date = st.sidebar.date_input('End Date', value=datetime.date.today())
 
 st.subheader(f'{ticker_symbol} Stock Overview')
 historical_data, pricing_data, chart = st.tabs(["Historical Data", "Pricing Data", "Chart"])
@@ -33,7 +33,11 @@ ticker = yf.Ticker(ticker_symbol)
 
 # if start_date is not None and end_date is not None
 data = yf.download(ticker_symbol, start=start_date, end=end_date, group_by='ticker_symbol')
-data = data.stack(level=0).rename_axis(['Date', 'Ticker']).reset_index(level=1)
+
+if data.empty:
+    st.warning("⚠️ No data returned. Try changing the stock ticker or date range.")
+else:
+    data = data.stack(level=0).rename_axis(['Date', 'Ticker']).reset_index(level=1)
 
 with historical_data:
     st.header('Historical Data')
